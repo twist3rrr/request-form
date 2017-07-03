@@ -2,7 +2,7 @@
 export default {
   "title": "New request",
   "info": {
-    "title": "Main informations",
+    "title": "Main information",
     "fields": {
       "name": {
         "label": "name",
@@ -17,18 +17,17 @@ export default {
   "size": {
     "title": "Size",
     "blocks": {
-      "dimensionBlock": {
+      "dimension-block": {
         "width": {
           "label": "width",
           "placeholder": 120
         },
         "height": {
-          "Label": "height",
+          "label": "height",
           "Placeholder": 360
         },
         "date": {
-          "Label": "Production date",
-          "Placeholder": "mm / dd / yy"
+          "label": "Production date",
         }
       },
       "properties": [
@@ -42,16 +41,16 @@ export default {
               "value": null
             },
             {
-              "label": "Type1",
+              "label": "Type-1",
               "disabled": false,
               "selected": false,
-              "value": "type1"
+              "value": "type-1"
             },
             {
-              "label": "Type2",
+              "label": "Type-2",
               "disabled": false,
               "selected": true,
-              "value": "type2"
+              "value": "type-2"
             }
           ]
         },
@@ -65,16 +64,16 @@ export default {
               "value": null
             },
             {
-              "label": "Type1",
+              "label": "Type-1",
               "disabled": false,
               "selected": false,
-              "value": "type1"
+              "value": "type-1"
             },
             {
-              "label": "Type2",
+              "label": "Type-2",
               "disabled": false,
               "selected": true,
-              "value": "type2"
+              "value": "type-2"
             }
           ]
         }
@@ -94,12 +93,12 @@ export default {
   "attachment": {
     "title": "Attachment",
     "label": "Drag & drop your files here or clock anywhere to upload",
-    "reservedLabel": "Click anywhere to upload your files"
+    "reserved-label": "Click anywhere to upload your files"
   },
   "bidding": {
     "title": "request type",
     "description": "Specify how many parties do you want to receive a bid from",
-    "radioBtns": [
+    "radio-buttons": [
       {
         "label": "1-way",
         "id": "r-1"
@@ -114,18 +113,16 @@ export default {
       }
     ]
   },
-  "bottomBlocks": [
+  "bottom-blocks": [
     {
       "title": "Bid deadline",
       "description": "When do you want to receive proposals",
-      "inputLabel": "Bid deadline",
-      "placeholder": "mm / dd / yy"
+      "input-label": "Bid deadline"
     },
     {
       "title": "Date of selection",
       "description": "When will you make a selection",
-      "inputLabel": "Date of selection",
-      "placeholder": "mm / dd / yy"
+      "input-Label": "Date of selection"
     }
   ]
 };
