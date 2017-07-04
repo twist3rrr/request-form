@@ -10,7 +10,6 @@ export default function requestReducer(state = defaultState, action = {}) {
 
   switch (type) {
     case FETCH_UI:
-    case FETCH_UI_SUCCESS:
     case FETCH_UI_FAILURE:
       return {
         ...state,

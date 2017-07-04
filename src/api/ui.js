@@ -17,7 +17,7 @@ export default {
   "size": {
     "title": "Size",
     "blocks": {
-      "dimension-block": {
+      "dimension_block": {
         "width": {
           "label": "width",
           "placeholder": 120
@@ -27,7 +27,7 @@ export default {
           "Placeholder": 360
         },
         "date": {
-          "label": "Production date",
+          "label": "Production date"
         }
       },
       "properties": [
@@ -81,24 +81,25 @@ export default {
       "amount": [
         {
           "label": "number of pages",
-          "value": 0,
+          "value": 0
         },
         {
           "label": "number of copies",
-          "value": 0,
+          "value": 0
         }
       ]
     }
   },
   "attachment": {
     "title": "Attachment",
+    "info": "Optional (maximum 4 files)",
     "label": "Drag & drop your files here or clock anywhere to upload",
-    "reserved-label": "Click anywhere to upload your files"
+    "reserved_label": "Click anywhere to upload your files"
   },
   "bidding": {
     "title": "request type",
     "description": "Specify how many parties do you want to receive a bid from",
-    "radio-buttons": [
+    "radio_buttons": [
       {
         "label": "1-way",
         "id": "r-1"
@@ -113,16 +114,16 @@ export default {
       }
     ]
   },
-  "bottom-blocks": [
+  "bottom_blocks": [
     {
       "title": "Bid deadline",
       "description": "When do you want to receive proposals",
-      "input-label": "Bid deadline"
+      "input_label": "Bid deadline"
     },
     {
       "title": "Date of selection",
       "description": "When will you make a selection",
-      "input-Label": "Date of selection"
+      "input_label": "Date of selection"
     }
   ]
 };

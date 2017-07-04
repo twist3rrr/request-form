@@ -5,26 +5,31 @@ export default function getRequestPage() {
   return (dispatch) => {
     dispatch({
       type: FETCH_UI,
-      isLoading: true
+      payload: {
+        isLoading: true
+      }
     });
 
-    // https://api.myjson.com/bins/vydun (link to json)
-
-    axios.get('https://api.myjson.com/bins/vydun')
-    .then((response) => {
-      dispatch({
-        type: FETCH_UI_SUCCESS,
-        payload: {
-          ui: response,
-          isLoading: false
-        }
+    // https://api.myjson.com/bins/10anmf (link to json)
+    setTimeout(() => {
+      axios.get('https://api.myjson.com/bins/10anmf')
+      .then((response) => {
+        dispatch({
+          type: FETCH_UI_SUCCESS,
+          payload: {
+            ui: response.data,
+            isLoading: false
+          }
+        });
+      }).catch((error) => {
+        dispatch({
+          type: FETCH_UI_FAILURE,
+          payload: {
+            isLoading: false
+          }
+        });
+        console.log(error);
       });
-    }).catch((error) => {
-      dispatch({
-        type: FETCH_UI_FAILURE,
-        isLoading: false
-      });
-      console.log(error);
-    });
+    }, 2000);
   }
 }
