@@ -1,5 +1,6 @@
 import { FETCH_UI, FETCH_UI_FAILURE, FETCH_UI_SUCCESS } from '../constants';
 import axios from 'axios';
+import ui from '../api/ui';
 
 export default function getRequestPage() {
   return (dispatch) => {
@@ -12,7 +13,7 @@ export default function getRequestPage() {
 
     // https://api.myjson.com/bins/10anmf (link to json)
     setTimeout(() => {
-      axios.get('https://api.myjson.com/bins/10anmf')
+   /*   axios.get('https://api.myjson.com/bins/10anmf')
       .then((response) => {
         dispatch({
           type: FETCH_UI_SUCCESS,
@@ -29,7 +30,14 @@ export default function getRequestPage() {
           }
         });
         console.log(error);
-      });
+      });*/
+        dispatch({
+            type: FETCH_UI_SUCCESS,
+            payload: {
+                ui: ui,
+                isLoading: false
+            }
+        });
     }, 2000);
   }
 }
