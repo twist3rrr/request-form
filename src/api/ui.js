@@ -36,11 +36,12 @@ export default {
             "properties": [
                 {
                     "label": "paper type",
+                    "statePropertyName": "sizePaperType",
                     "items": [
                         {
                             "label": "Choose paper type",
                             "disabled": true,
-                            "value": "placeholder"
+                            "value": ""
                         },
                         {
                             "label": "Type-1",
@@ -56,11 +57,12 @@ export default {
                 },
                 {
                     "label": "finishing",
+                    "statePropertyName": "sizeFinishing",
                     "items": [
                         {
                             "label": "Choose finishing",
                             "disabled": true,
-                            "value": "placeholder"
+                            "value": ""
                         },
                         {
                             "label": "Type-1",

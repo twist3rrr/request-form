@@ -25,3 +25,9 @@
     width: 50%;
     padding-left: 15px;
 }
+.input__error {
+  display: block;
+  position: absolute;
+  top: calc(100% - 1px);
+  left: 0;
+}

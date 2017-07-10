@@ -1,9 +1,10 @@
 import React from 'react';
+import Validation from 'react-validation';
 import propTypes from 'prop-types';
 import ReactSVG from 'react-svg';
 
 export default function Size(props){
-  const { title, blocks } = props;
+  const { title, blocks, sizePaperType, sizeFinishing, defaultHandleChange } = props;
   const { amount, properties, dimension_block } = blocks;
 
   const dimensionBlock = () => {
@@ -40,6 +41,8 @@ export default function Size(props){
 
   const propertiesBlock = properties.map((block, index) => {
 
+    let valueOfSelect;
+
     const properyOptions = block.items.map((option, index) => {
       const { label, disabled, value } = option;
       return(
@@ -47,13 +50,29 @@ export default function Size(props){
       );
     });
 
+    switch (index) {
+      case 0:
+        valueOfSelect = sizePaperType;
+        break;
+      default:
+        valueOfSelect = sizeFinishing;
+        break;
+    }
+
+    console.log(Size[block.statePropertyName]);
+
     return (
       <div className="input__wrapper" key={index}>
         <span className="input__label">{block.label}</span>
         <div className="input__select">
-          <select>
+          <Validation.components.Select
+            name={block.statePropertyName}
+            value={valueOfSelect}
+            onChange={(e) => defaultHandleChange(block.statePropertyName, e.target.value)}
+            validations={['required']}
+            >
             {properyOptions}
-          </select>
+          </Validation.components.Select>
         </div>
       </div>
     );

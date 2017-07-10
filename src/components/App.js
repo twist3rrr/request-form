@@ -33,11 +33,12 @@ class App extends Component {
     };
 
     componentDidMount() {
-        const {getRequestPage} = this.props;
+        const { getRequestPage } = this.props;
         getRequestPage();
     }
 
     defaultHandleChange = (statePropName, value) => {
+        console.log(value);
         this.setState({
             [statePropName]: value
         });
@@ -54,7 +55,11 @@ class App extends Component {
                           mainInfoDescription={this.state.mainInfoDescription}
                           defaultHandleChange={this.defaultHandleChange}
                     />
-                    <Size {...ui.size}/>
+                    <Size {...ui.size}
+                        sizePaperType={this.state.sizePaperType}
+                        sizeFinishing={this.state.sizeFinishing}
+                        defaultHandleChange={this.defaultHandleChange}
+                    />
                     <Attachment {...ui.attachment}/>
                     <Bidding {...ui.bidding}/>
                     <DateBlocks bottomBlocks={ui.bottom_blocks}/>
