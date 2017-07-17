@@ -12,8 +12,8 @@ export default function setValidationRules() {
             // Function to return hint
             // You may use current value to inject it in some way to the hint
             hint: value => {
-              return <span className='input__error'>Required</span>
+                return <span className="input__error">Required</span>;
             }
         }
     });
-};
+}

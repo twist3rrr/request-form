@@ -19,18 +19,19 @@ export default {
     "size": {
         "title": "Size",
         "blocks": {
-            "dimension_block": {
+            "dimensionBlock": {
                 "width": {
                     "label": "width",
-                    "placeholder": "width..."
+                    "statePropertyName": "sizeWidth"
                 },
                 "height": {
                     "label": "height",
-                    "placeholder": "height..."
+                    "statePropertyName": "sizeHeight"
                 },
-                "date": {
+                "dateField": {
                     "label": "Production date",
-                    "placeholder": "dd / mm / yy"
+                    "placeholder": "dd / mm / yy",
+                    "statePropertyName": "sizeProductionDate"
                 }
             },
             "properties": [
@@ -80,9 +81,11 @@ export default {
             "amount": [
                 {
                     "label": "number of pages",
+                    "statePropertyName": "sizeNumberOfPages"
                 },
                 {
                     "label": "number of copies",
+                    "statePropertyName": "sizeNumberOfCopies"
                 }
             ]
         }
@@ -91,12 +94,12 @@ export default {
         "title": "Attachment",
         "info": "Optional (maximum 4 files)",
         "label": "Drag & drop your files here or clock anywhere to upload",
-        "reserved_label": "Click anywhere to upload your files"
+        "reservedLabel": "Click anywhere to upload your files"
     },
     "bidding": {
         "title": "request type",
         "description": "Specify how many parties do you want to receive a bid from",
-        "radio_buttons": [
+        "radioButtons": [
             {
                 "label": "1-way",
                 "id": "r-1"
@@ -111,17 +114,17 @@ export default {
             }
         ]
     },
-    "bottom_blocks": [
+    "bottomBlocks": [
         {
             "title": "Bid deadline",
             "description": "When do you want to receive proposals",
-            "input_label": "Bid deadline",
+            "inputLabel": "Bid deadline",
             "placeholder": "dd / mm / yy"
         },
         {
             "title": "Date of selection",
             "description": "When will you make a selection",
-            "input_label": "Date of selection",
+            "inputLabel": "Date of selection",
             "placeholder": "dd / mm / yy"
         }
     ]

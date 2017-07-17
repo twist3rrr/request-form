@@ -1,8 +1,6 @@
-import React, {Component}  from 'react';
+import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import Validation from 'react-validation';
-import setValidationRules from '../validation'
 
 import getRequestPage from '../AC/request';
 import Spinner from './Spinner';
@@ -12,10 +10,8 @@ import Size from './Size';
 import Bidding from './Bidding';
 import DateBlocks from './DateBlocks';
 
-setValidationRules();
 
 class App extends Component {
-
     state = {
         mainInfoName: '',
         mainInfoDescription: '',
@@ -45,29 +41,33 @@ class App extends Component {
     };
 
     render() {
+        console.log(this.state);
         const {isLoading, ui} = this.props;
         const content = !isLoading
             ? <div className="container pt-3">
-                <Validation.components.Form>
                     <h1 className="mb-4">{ui.title}</h1>
                     <MainInfo {...ui.info}
-                          mainInfoName={this.state.mainInfoName}
-                          mainInfoDescription={this.state.mainInfoDescription}
-                          defaultHandleChange={this.defaultHandleChange}
+                        mainInfoName={this.state.mainInfoName}
+                        mainInfoDescription={this.state.mainInfoDescription}
+                        defaultHandleChange={this.defaultHandleChange}
                     />
                     <Size {...ui.size}
                         sizePaperType={this.state.sizePaperType}
                         sizeFinishing={this.state.sizeFinishing}
+                        sizeNumberOfPages={this.state.sizeNumberOfPages}
+                        sizeNumberOfCopies={this.state.sizeNumberOfCopies}
+                        sizeWidth={this.state.sizeWidth}
+                        sizeHeight={this.state.sizeHeight}
+                        sizeProductionDate={this.state.sizeProductionDate}
                         defaultHandleChange={this.defaultHandleChange}
                     />
                     <Attachment {...ui.attachment}/>
                     <Bidding {...ui.bidding}/>
-                    <DateBlocks bottomBlocks={ui.bottom_blocks}/>
+                    <DateBlocks bottomBlocks={ui.bottomBlocks}/>
 
                     <div className="block">
-                        <Validation.components.Button className="btn-action js-drop-zone-submit">Submit a request</Validation.components.Button>
+                        <button className="btn-action js-drop-zone-submit">Submit a request</button>
                     </div>
-                </Validation.components.Form>
             </div>
             : <Spinner />;
 
@@ -80,7 +80,7 @@ class App extends Component {
 }
 
 export default connect((state) => {
-    const {isLoading, ui} = state.request;
+    const { isLoading, ui } = state.request;
 
     return {
         isLoading,
