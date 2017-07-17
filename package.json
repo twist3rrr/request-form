@@ -10,6 +10,7 @@
     "react": "^15.6.1",
     "react-datepicker": "^0.49.0",
     "react-dom": "^15.6.1",
+    "react-notify-toast": "^0.3.0",
     "react-redux": "^5.0.5",
     "react-svg": "^2.1.21",
     "redux": "^3.7.1",

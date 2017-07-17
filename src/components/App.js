@@ -40,6 +40,46 @@ class App extends Component {
         });
     };
 
+    handleFile = (path) => {
+        const addFile = () => {
+            const src = path;
+            const splitedPath = path.split('\\');
+            const splitedFileString = splitedPath[splitedPath.length - 1].split('.');
+            const extension =  `.${splitedFileString[splitedFileString.length - 1]}`
+            const name = splitedFileString[splitedFileString.length - 2];
+            const newStateArray = [
+                ...this.state.attachment,
+                {
+                    src,
+                    name,
+                    extension,
+                    id: Date.now()
+                }
+            ];
+
+            this.setState({
+                attachment: newStateArray
+            });
+        }
+        
+        if(this.state.attachment.length > 4) {
+            return console.log('max amount of files');
+        } else {
+            addFile();
+        }
+    };
+
+    deleteFile = (id) => {
+        console.log(id);
+        const newStateArray = this.state.attachment.filter((file) => {
+            return file.id !== id;
+        });
+
+        this.setState({
+            attachment: newStateArray
+        });
+    }
+
     render() {
         console.log(this.state);
         const {isLoading, ui} = this.props;
@@ -61,7 +101,12 @@ class App extends Component {
                         sizeProductionDate={this.state.sizeProductionDate}
                         defaultHandleChange={this.defaultHandleChange}
                     />
-                    <Attachment {...ui.attachment}/>
+                    <Attachment {...ui.attachment} 
+                        files={this.state.attachment} 
+                        handleFile={this.handleFile}
+                        deleteFile={this.deleteFile}
+                    />
+                        
                     <Bidding {...ui.bidding}/>
                     <DateBlocks bottomBlocks={ui.bottomBlocks}/>
 
