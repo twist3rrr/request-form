@@ -58,13 +58,15 @@ export default function Size(props) {
                     <span className="input__label">
                         {dateField.label}
                     </span>
-                    <DatePicker
-                        className="input__text"
-                        name={dateField.statePropertyName}
-                        placeholder={dateField.placeholder}
-                        selected={sizeProductionDate}
-                        onChange={date => defaultHandleChange(dateField.statePropertyName, date)}
-                    />
+                    <div className="w-100--inner">
+                        <DatePicker
+                            className="input__text"
+                            name={dateField.statePropertyName}
+                            placeholderText={dateField.placeholder}
+                            selected={sizeProductionDate}
+                            onChange={date => defaultHandleChange(dateField.statePropertyName, date)}
+                        />
+                    </div>
                     <ReactSVG
                         path="../svg/calendar_1.svg"
                         className="icon icon-input"

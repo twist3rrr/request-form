@@ -31,3 +31,24 @@
   top: calc(100% - 1px);
   left: 0;
 }
+
+.w-100 {
+    width: 100%;
+}
+
+.w-100--inner {
+    width: 100%;
+}
+
+.w-100--inner > div {
+    width: 100%;
+}
+
+.w-100--inner > div > div {
+    width: 100%;
+}
+
+.w-100--inner > div > div > div:not(.react-datepicker){
+    width: 100%;
+}
+

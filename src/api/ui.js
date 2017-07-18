@@ -30,7 +30,7 @@ export default {
                 },
                 "dateField": {
                     "label": "Production date",
-                    "placeholder": "dd / mm / yy",
+                    "placeholder": "mm/dd/yy",
                     "statePropertyName": "sizeProductionDate"
                 }
             },
@@ -119,13 +119,15 @@ export default {
             "title": "Bid deadline",
             "description": "When do you want to receive proposals",
             "inputLabel": "Bid deadline",
-            "placeholder": "dd / mm / yy"
+            "placeholder": "mm/dd/yy",
+            "statePropertyName": "bidDeadline"
         },
         {
             "title": "Date of selection",
             "description": "When will you make a selection",
             "inputLabel": "Date of selection",
-            "placeholder": "dd / mm / yy"
+            "placeholder": "mm/dd/yy",
+            "statePropertyName": "dateOfSelection"
         }
     ]
 };

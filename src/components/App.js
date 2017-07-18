@@ -1,6 +1,8 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 import getRequestPage from '../AC/request';
 import Spinner from './Spinner';
@@ -60,6 +62,8 @@ class App extends Component {
             this.setState({
                 attachment: newStateArray
             });
+
+            NotificationManager.success('Success', `File: ${splitedPath[splitedPath.length - 1]} was uploaded`);
         }
         
         if(this.state.attachment.length > 4) {
@@ -70,14 +74,17 @@ class App extends Component {
     };
 
     deleteFile = (id) => {
-        console.log(id);
+        let removedFile;
         const newStateArray = this.state.attachment.filter((file) => {
+            if(file.id === id) {removedFile = file}
             return file.id !== id;
         });
 
         this.setState({
             attachment: newStateArray
         });
+
+        NotificationManager.warning('Warning', `File: ${removedFile.name}.${removedFile.extension} was removed`);
     }
 
     render() {
@@ -108,11 +115,16 @@ class App extends Component {
                     />
                         
                     <Bidding {...ui.bidding}/>
-                    <DateBlocks bottomBlocks={ui.bottomBlocks}/>
+                    <DateBlocks bottomBlocks={ui.bottomBlocks}
+                                bidDeadline={this.state.bidDeadline}
+                                dateOfSelection={this.state.dateOfSelection}
+                                defaultHandleChange={this.defaultHandleChange}
+                    />
 
                     <div className="block">
                         <button className="btn-action js-drop-zone-submit">Submit a request</button>
                     </div>
+                    <NotificationContainer/>
             </div>
             : <Spinner />;
 
