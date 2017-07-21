@@ -1,6 +1,6 @@
-import { FETCH_UI, FETCH_UI_FAILURE, FETCH_UI_SUCCESS } from "../constants";
-import axios from "axios";
-import ui from "../api/ui";
+import { FETCH_UI, FETCH_UI_FAILURE, FETCH_UI_SUCCESS } from '../constants';
+import axios from 'axios';
+import ui from '../api/ui';
 
 export default function getRequestPage() {
     return dispatch => {
@@ -41,3 +41,4 @@ export default function getRequestPage() {
         }, 2000);
     };
 }
+

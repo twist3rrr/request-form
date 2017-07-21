@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 export default function Bidding(props) {
-    const { title, description, radioButtons } = props;
+    const { title, description, radioButtons, defaultHandleChange } = props;
     const checkboxes = radioButtons.map((item, index) => {
         let isChecked;
         if (index === 0) {
@@ -13,8 +13,19 @@ export default function Bidding(props) {
 
         return (
             <div className="input__wrapper" key={index}>
-                <input defaultChecked={isChecked} id={item.id} name="bid" type="radio" className="input__radio" />
-                <label htmlFor={item.id} className="input__label input__label--radio">{item.label}</label>
+                <input
+                    defaultChecked={isChecked}
+                    id={item.id}
+                    value={item.value}
+                    name="bid"
+                    type="radio"
+                    className="input__radio"
+                    onClick={(e) => defaultHandleChange('requestType', e.target.value)}
+                />
+                <label
+                    htmlFor={item.id}
+                    className="input__label input__label--radio"
+                >{item.label}</label>
             </div>
         );
     });

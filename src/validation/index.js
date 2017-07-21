@@ -1,19 +1,84 @@
-import React from 'react';
-import Validation from 'react-validation';
+const isRequired = (value) => {
+    let answer;
+    if (!value || value.length === 0) {
+        answer = false;
+    } else {
+        answer = true;
+    }
+    return answer ? null : 'This field is required';
+};
 
-export default function setValidationRules() {
-    Object.assign(Validation.rules, {
-        required: {
-            // Function to validate value
-            // NOTE: value might be a number -> force to string
-            rule: value => {
-                return value.toString().trim();
-            },
-            // Function to return hint
-            // You may use current value to inject it in some way to the hint
-            hint: value => {
-                return <span className="input__error">Required</span>;
-            }
+
+export default function validationConfig(props) {
+    const { mainInfoName,
+            mainInfoDescription,
+            sizePaperType,
+            sizeFinishing,
+            sizeNumberOfPages,
+            sizeNumberOfCopies,
+            sizeWidth,
+            sizeHeight,
+            sizeProductionDate,
+            bidDeadline,
+            attachment,
+            dateOfSelection
+
+        } = props.rootState;
+
+    return {
+        fields: [
+            'mainInfoName',
+            'mainInfoDescription',
+            'sizePaperType',
+            'sizeFinishing',
+            'sizeNumberOfPages',
+            'sizeNumberOfCopies',
+            'sizeWidth',
+            'attachment',
+            'sizeHeight',
+            'sizeProductionDate',
+            'bidDeadline',
+            'dateOfSelection'
+        ],
+
+        validations: {
+            mainInfoName: [
+                [isRequired, mainInfoName]
+            ],
+            mainInfoDescription: [
+                [isRequired, mainInfoDescription]
+            ],
+            sizePaperType: [
+                [isRequired, sizePaperType]
+            ],
+            sizeFinishing: [
+                [isRequired, sizeFinishing]
+            ],
+            sizeNumberOfPages: [
+                [isRequired, sizeNumberOfPages]
+            ],
+            attachment: [
+                [isRequired, attachment]
+            ],
+            sizeNumberOfCopies: [
+                [isRequired, sizeNumberOfCopies]
+            ],
+            sizeWidth: [
+                [isRequired, sizeWidth]
+            ],
+            sizeHeight: [
+                [isRequired, sizeHeight]
+            ],
+            sizeProductionDate: [
+                [isRequired, sizeProductionDate]
+            ],
+            bidDeadline: [
+                [isRequired, bidDeadline]
+            ],
+            dateOfSelection: [
+                [isRequired, dateOfSelection]
+            ],
+
         }
-    });
+    };
 }

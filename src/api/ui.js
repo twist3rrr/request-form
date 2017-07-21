@@ -37,7 +37,6 @@ export default {
             "properties": [
                 {
                     "label": "paper type",
-                    "statePropertyName": "sizePaperType",
                     "items": [
                         {
                             "label": "Choose paper type",
@@ -58,7 +57,6 @@ export default {
                 },
                 {
                     "label": "finishing",
-                    "statePropertyName": "sizeFinishing",
                     "items": [
                         {
                             "label": "Choose finishing",
@@ -80,12 +78,10 @@ export default {
             ],
             "amount": [
                 {
-                    "label": "number of pages",
-                    "statePropertyName": "sizeNumberOfPages"
+                    "label": "number of pages"
                 },
                 {
-                    "label": "number of copies",
-                    "statePropertyName": "sizeNumberOfCopies"
+                    "label": "number of copies"
                 }
             ]
         }
@@ -102,15 +98,18 @@ export default {
         "radioButtons": [
             {
                 "label": "1-way",
-                "id": "r-1"
+                "id": "r-1",
+                "value": "r-1"
             },
             {
                 "label": "2-way",
-                "id": "r-2"
+                "id": "r-2",
+                "value": "r-2"
             },
             {
                 "label": "3-way",
-                "id": "r-3"
+                "id": "r-3",
+                "value": "r-2"
             }
         ]
     },
@@ -119,15 +118,13 @@ export default {
             "title": "Bid deadline",
             "description": "When do you want to receive proposals",
             "inputLabel": "Bid deadline",
-            "placeholder": "mm/dd/yy",
-            "statePropertyName": "bidDeadline"
+            "placeholder": "mm/dd/yy"
         },
         {
             "title": "Date of selection",
             "description": "When will you make a selection",
             "inputLabel": "Date of selection",
-            "placeholder": "mm/dd/yy",
-            "statePropertyName": "dateOfSelection"
+            "placeholder": "mm/dd/yy"
         }
     ]
 };

@@ -7,8 +7,11 @@ export default function MainInfo(props) {
         fields,
         mainInfoName,
         mainInfoDescription,
-        defaultHandleChange
+        defaultHandleChange,
+        $field,
+        $validation
     } = props;
+
     const { name, description } = fields;
 
     return (
@@ -28,8 +31,9 @@ export default function MainInfo(props) {
                         className="input__text"
                         placeholder={name.placeholder}
                         value={mainInfoName}
-                        onChange={e => defaultHandleChange(name.statePropertyName, e.target.value)}
+                        {...$field('mainInfoName', (e) => defaultHandleChange('mainInfoName', e.target.value))}
                     />
+                    {$validation.mainInfoName.show && <span className="input__error">{$validation.mainInfoName.error.reason}</span>}
                 </div>
 
                 <div className="input__wrapper">
@@ -41,8 +45,9 @@ export default function MainInfo(props) {
                         className="input__textarea"
                         placeholder={description.placeholder}
                         value={mainInfoDescription}
-                        onChange={e => defaultHandleChange(description.statePropertyName, e.target.value)}
+                        {...$field('mainInfoDescription', (e) => defaultHandleChange('mainInfoDescription', e.target.value))}
                     />
+                    {$validation.mainInfoDescription.show && <span className="input__error">{$validation.mainInfoDescription.error.reason}</span>}
                 </div>
             </div>
         </div>

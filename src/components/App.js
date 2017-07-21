@@ -1,17 +1,12 @@
-import React, { Component }  from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
 
+import { NotificationManager } from 'react-notifications';
 import getRequestPage from '../AC/request';
-import Spinner from './Spinner';
-import MainInfo from './MainInfo';
-import Attachment from './Attachment';
-import Size from './Size';
-import Bidding from './Bidding';
-import DateBlocks from './DateBlocks';
 
+
+import Form from './Form';
 
 class App extends Component {
     state = {
@@ -25,7 +20,7 @@ class App extends Component {
         sizeHeight: '',
         sizeProductionDate: '',
         attachment: [],
-        requestType: '',
+        requestType: 'r-1',
         bidDeadline: '',
         dateOfSelection: ''
     };
@@ -36,11 +31,11 @@ class App extends Component {
     }
 
     defaultHandleChange = (statePropName, value) => {
-        console.log(value);
         this.setState({
             [statePropName]: value
         });
     };
+
 
     handleFile = (path) => {
         const addFile = () => {
@@ -87,51 +82,31 @@ class App extends Component {
         NotificationManager.warning('Warning', `File: ${removedFile.name}.${removedFile.extension} was removed`);
     }
 
+    onValid = () => {
+        NotificationManager.success('Your request was successfully sent');
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
+    }
+
+    onInvalid = () => {
+        NotificationManager.error('Your request was not sent');
+
+    }
+
     render() {
-        console.log(this.state);
-        const {isLoading, ui} = this.props;
-        const content = !isLoading
-            ? <div className="container pt-3">
-                    <h1 className="mb-4">{ui.title}</h1>
-                    <MainInfo {...ui.info}
-                        mainInfoName={this.state.mainInfoName}
-                        mainInfoDescription={this.state.mainInfoDescription}
-                        defaultHandleChange={this.defaultHandleChange}
-                    />
-                    <Size {...ui.size}
-                        sizePaperType={this.state.sizePaperType}
-                        sizeFinishing={this.state.sizeFinishing}
-                        sizeNumberOfPages={this.state.sizeNumberOfPages}
-                        sizeNumberOfCopies={this.state.sizeNumberOfCopies}
-                        sizeWidth={this.state.sizeWidth}
-                        sizeHeight={this.state.sizeHeight}
-                        sizeProductionDate={this.state.sizeProductionDate}
-                        defaultHandleChange={this.defaultHandleChange}
-                    />
-                    <Attachment {...ui.attachment} 
-                        files={this.state.attachment} 
-                        handleFile={this.handleFile}
-                        deleteFile={this.deleteFile}
-                    />
-                        
-                    <Bidding {...ui.bidding}/>
-                    <DateBlocks bottomBlocks={ui.bottomBlocks}
-                                bidDeadline={this.state.bidDeadline}
-                                dateOfSelection={this.state.dateOfSelection}
-                                defaultHandleChange={this.defaultHandleChange}
-                    />
-
-                    <div className="block">
-                        <button className="btn-action js-drop-zone-submit">Submit a request</button>
-                    </div>
-                    <NotificationContainer/>
-            </div>
-            : <Spinner />;
-
         return (
-            <div>
-                {content}
-            </div>
+            <Form 
+                defaultHandleChange={this.defaultHandleChange}
+                handleFile={this.handleFile}
+                deleteFile={this.deleteFile}
+                ui={this.props.ui}
+                isLoading={this.props.isLoading}
+                rootState={this.state}
+                onValid={this.onValid}
+                onInvalid={this.onInvalid}
+            />
         );
     }
 }

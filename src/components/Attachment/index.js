@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import ReactSVG from 'react-svg';
 
 export default function Attachment(props) {
-    const { title, label, reservedLabel, info, files, handleFile, deleteFile } = props;
+    const { title, label, reservedLabel, info, files, handleFile, deleteFile, $field, $validation } = props;
 
     const haveFilesClass = files.length ? 'isDropped' : '';
 
@@ -39,15 +39,20 @@ export default function Attachment(props) {
             </div>
 
             <div className={`drop-zone ${haveFilesClass}`}>
-                <input className="js-drop-zone-files-count" type="file" name="file-count" onChange={(e) => handleFile(e.target.value)} />
+                <input
+                    className="js-drop-zone-files-count"
+                    type="file"
+                    name="file-count"
+                    {...$field('attachment', (e) => handleFile(e.target.value))}
+                />
                 <div className="drop-zone__dropping">
                     <ReactSVG path="../svg/draganddrop.svg" className="icon icon-drop" />
                     <p className="font-text default-text">{label}</p>
                     <p className="font-text reserved-text">{reservedLabel}</p>
                 </div>
                 {filesList}
+                {$validation.attachment.show && <span className="input__error">{$validation.attachment.error.reason}</span>}
             </div>
-
         </div>
     );
 }

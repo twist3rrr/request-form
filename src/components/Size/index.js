@@ -16,7 +16,9 @@ export default function Size(props) {
         sizeNumberOfCopies,
         sizeWidth,
         sizeHeight,
-        sizeProductionDate
+        sizeProductionDate,
+        $field,
+        $validation
     } = props;
     const { amount, properties, dimensionBlock } = blocks;
 
@@ -34,10 +36,10 @@ export default function Size(props) {
                             value={sizeWidth}
                             placeholder="0"
                             min="0"
-                            name={width.statePropertyName}
                             className="input__text"
-                            onChange={e => defaultHandleChange(width.statePropertyName, e.target.value)}
+                            {...$field('sizeWidth', (e) => defaultHandleChange('sizeWidth', e.target.value))}
                         />
+                        {$validation.sizeWidth.show && <span className="input__error">{$validation.sizeWidth.error.reason}</span>}
                     </div>
                     <div className="input__wrapper">
                         <span className="input__label">
@@ -48,10 +50,10 @@ export default function Size(props) {
                             value={sizeHeight}
                             placeholder="0"
                             min="0"
-                            name={height.statePropertyName}
                             className="input__text"
-                            onChange={e => defaultHandleChange(height.statePropertyName, e.target.value)}
+                            {...$field('sizeHeight', (e) => defaultHandleChange('sizeHeight', e.target.value))}
                         />
+                        {$validation.sizeHeight.show && <span className="input__error">{$validation.sizeHeight.error.reason}</span>}
                     </div>
                 </div>
                 <div className="input__wrapper input__wrapper--with-icon">
@@ -61,11 +63,11 @@ export default function Size(props) {
                     <div className="w-100--inner">
                         <DatePicker
                             className="input__text"
-                            name={dateField.statePropertyName}
                             placeholderText={dateField.placeholder}
                             selected={sizeProductionDate}
-                            onChange={date => defaultHandleChange(dateField.statePropertyName, date)}
+                            {...$field('sizeProductionDate', (date) => defaultHandleChange('sizeProductionDate', date))}
                         />
+                        {$validation.sizeProductionDate.show && <span className="input__error">{$validation.sizeProductionDate.error.reason}</span>}
                     </div>
                     <ReactSVG
                         path="../svg/calendar_1.svg"
@@ -78,13 +80,16 @@ export default function Size(props) {
 
     const amountBlock = amount.map((item, index) => {
         let stateValue;
+        let statePropertyName;
 
-        switch (item.statePropertyName) {
-            case 'sizeNumberOfPages':
+        switch (index) {
+            case 0:
                 stateValue = sizeNumberOfPages;
+                statePropertyName = 'sizeNumberOfPages';
                 break;
             default:
                 stateValue = sizeNumberOfCopies;
+                statePropertyName = 'sizeNumberOfCopies';
                 break;
         }
 
@@ -98,16 +103,18 @@ export default function Size(props) {
                     value={stateValue}
                     placeholder="0"
                     min="0"
-                    name={item.statePropertyName}
                     className="input__text"
                     onChange={e => defaultHandleChange(item.statePropertyName, e.target.value)}
+                    {...$field(statePropertyName, (e) => defaultHandleChange(statePropertyName, e.target.value))}
                 />
+                {$validation[statePropertyName].show && <span className="input__error">{$validation[statePropertyName].error.reason}</span>}
             </div>
         );
     });
 
     const propertiesBlock = properties.map((block, index) => {
         let valueOfSelect;
+        let statePropertyName;
 
         const properyOptions = block.items.map((option, index) => {
             const { label, disabled, value } = option;
@@ -118,15 +125,16 @@ export default function Size(props) {
             );
         });
 
-        switch (block.statePropertyName) {
-            case 'sizePaperType':
+        switch (index) {
+            case 0:
                 valueOfSelect = sizePaperType;
+                statePropertyName = 'sizePaperType';
                 break;
             default:
                 valueOfSelect = sizeFinishing;
+                statePropertyName = 'sizeFinishing';
                 break;
         }
-
 
         return (
             <div className="input__wrapper" key={index}>
@@ -135,12 +143,13 @@ export default function Size(props) {
                 </span>
                 <div className="input__select">
                     <select
-                        name={block.statePropertyName}
+                        name={statePropertyName}
                         value={valueOfSelect}
-                        onChange={e => defaultHandleChange(block.statePropertyName, e.target.value)}
+                        {...$field(statePropertyName, (e) => defaultHandleChange(statePropertyName, e.target.value))}
                     >
                         {properyOptions}
                     </select>
+                    {$validation[statePropertyName].show && <span className="input__error">{$validation[statePropertyName].error.reason}</span>}
                 </div>
             </div>
         );

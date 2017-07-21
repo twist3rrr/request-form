@@ -4,17 +4,20 @@ import ReactSVG from 'react-svg';
 import DatePicker from 'react-datepicker';
 
 export default function DateBlocks(props) {
-    const { bottomBlocks, bidDeadline, dateOfSelection, defaultHandleChange } = props;
+    const { bottomBlocks, bidDeadline, dateOfSelection, defaultHandleChange, $field, $validation } = props;
     const blocks = bottomBlocks.map((item, index) => {
-        const { title, description, inputLabel, placeholder, statePropertyName } = item;
+        const { title, description, inputLabel, placeholder } = item;
         let value;
+        let statePropertyName;
 
         switch (index) {
             case 0:
                 value = bidDeadline;
+                statePropertyName = 'bidDeadline';
                 break;
             default:
                 value = dateOfSelection;
+                statePropertyName = 'dateOfSelection';
                 break;
         }
 
@@ -33,9 +36,11 @@ export default function DateBlocks(props) {
                             placeholderText={placeholder}
                             selected={value}
                             onChange={date => defaultHandleChange(statePropertyName, date)}
+                            {...$field(statePropertyName, (date) => defaultHandleChange(statePropertyName, date))}
                         />
                     </div>
                     <ReactSVG path="../svg/calendar_1.svg" className="icon icon-input" />
+                    {$validation[statePropertyName].show && <span className="input__error">{$validation[statePropertyName].error.reason}</span>}
                 </div>
             </div>
             </div>
