@@ -92,7 +92,6 @@ class App extends Component {
 
     onInvalid = () => {
         NotificationManager.error('Your request was not sent');
-
     }
 
     render() {

@@ -3,7 +3,9 @@ import propTypes from 'prop-types';
 import ReactSVG from 'react-svg';
 import DatePicker from 'react-datepicker';
 
+import { SVG_PATH } from '../../constants';
 import 'react-datepicker/dist/react-datepicker.css';
+
 
 export default function Size(props) {
     const {
@@ -70,7 +72,7 @@ export default function Size(props) {
                         {$validation.sizeProductionDate.show && <span className="input__error">{$validation.sizeProductionDate.error.reason}</span>}
                     </div>
                     <ReactSVG
-                        path="../svg/calendar_1.svg"
+                        path={`${SVG_PATH}calendar_1.svg`}
                         className="icon icon-input"
                     />
                 </div>
@@ -185,5 +187,15 @@ export default function Size(props) {
 
 Size.propTypes = {
     title: propTypes.string.isRequired,
-    blocks: propTypes.object.isRequired
+    blocks: propTypes.object.isRequired,
+    sizePaperType: propTypes.string.isRequired,
+    sizeFinishing: propTypes.string.isRequired,
+    sizeNumberOfPages: propTypes.string.isRequired,
+    sizeNumberOfCopies: propTypes.string.isRequired,
+    sizeWidth: propTypes.string.isRequired,
+    sizeHeight: propTypes.string.isRequired,
+    sizeProductionDate: propTypes.oneOfType([
+        propTypes.string,
+        propTypes.object
+    ])
 };

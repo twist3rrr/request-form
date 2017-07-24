@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import ReactSVG from 'react-svg';
+import { SVG_PATH } from '../../constants';
 
 export default function Attachment(props) {
     const { title, label, reservedLabel, info, files, handleFile, deleteFile, $field, $validation } = props;
@@ -22,7 +23,7 @@ export default function Attachment(props) {
                         >X
                         </button>
                         <span className="drop-zone__ext js-drop-zone-ext">{extension}</span>
-                        <img src="/svg/fileValid.png" alt="file icon" className="icon-csv" />
+                        <img src={`${SVG_PATH}fileValid.png`} alt="file icon" className="icon-csv" />
                     </div>
                 <p>{name}</p>
                 </div>
@@ -46,7 +47,7 @@ export default function Attachment(props) {
                     {...$field('attachment', (e) => handleFile(e.target.value))}
                 />
                 <div className="drop-zone__dropping">
-                    <ReactSVG path="../svg/draganddrop.svg" className="icon icon-drop" />
+                    <ReactSVG path={`${SVG_PATH}draganddrop.svg`} className="icon icon-drop" />
                     <p className="font-text default-text">{label}</p>
                     <p className="font-text reserved-text">{reservedLabel}</p>
                 </div>

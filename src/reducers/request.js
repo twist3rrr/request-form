@@ -6,10 +6,7 @@ const defaultState = {
 };
 
 export default function requestReducer(state = defaultState, action = {}) {
-    const {
-        type,
-        payload
-    } = action;
+    const { type, payload } = action;
 
     switch (type) {
         case FETCH_UI:

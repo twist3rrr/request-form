@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
 import validationConfig from '../validation';
 import { validated } from 'react-custom-validation';
 
@@ -39,13 +40,9 @@ class Form extends Component {
             sizeHeight,
             sizeProductionDate,
             attachment,
-            requestType,
             bidDeadline,
             dateOfSelection
         } = rootState;
-
-        console.log('STATE', rootState);
-
 
         const content = !isLoading
             ? (<div className="container pt-3">
@@ -114,5 +111,16 @@ class Form extends Component {
 }
 
 Form = validated(validationConfig)(Form);
+
+Form.propTypes = {
+    isLoading: propTypes.bool.isRequired,
+    ui: propTypes.object.isRequired,
+    rootState: propTypes.object.isRequired,
+    defaultHandleChange: propTypes.func.isRequired,
+    handleFile: propTypes.func.isRequired,
+    deleteFile: propTypes.func.isRequired,
+    onValid: propTypes.func.isRequired,
+    onInvalid: propTypes.func.isRequired
+};
 
 export default Form;

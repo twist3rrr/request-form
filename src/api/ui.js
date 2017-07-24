@@ -7,12 +7,10 @@ export default {
             "name": {
                 "label": "name",
                 "placeholder": "Name your request",
-                "statePropertyName": "mainInfoName"
             },
             "description": {
                 "label": "description",
                 "placeholder": "Describe your request",
-                "statePropertyName": "mainInfoDescription"
             }
         }
     },
@@ -22,16 +20,13 @@ export default {
             "dimensionBlock": {
                 "width": {
                     "label": "width",
-                    "statePropertyName": "sizeWidth"
                 },
                 "height": {
                     "label": "height",
-                    "statePropertyName": "sizeHeight"
                 },
                 "dateField": {
                     "label": "Production date",
                     "placeholder": "mm/dd/yy",
-                    "statePropertyName": "sizeProductionDate"
                 }
             },
             "properties": [

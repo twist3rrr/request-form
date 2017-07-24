@@ -58,6 +58,5 @@ MainInfo.propTypes = {
     title: propTypes.string.isRequired,
     fields: propTypes.object.isRequired,
     mainInfoName: propTypes.string.isRequired,
-    mainInfoDescription: propTypes.string.isRequired,
-    defaultHandleChange: propTypes.func.isRequired
+    mainInfoDescription: propTypes.string.isRequired
 };

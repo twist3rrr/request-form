@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import ReactSVG from 'react-svg';
+import { SVG_PATH } from '../../constants';
 import DatePicker from 'react-datepicker';
 
 export default function DateBlocks(props) {
@@ -35,11 +36,10 @@ export default function DateBlocks(props) {
                             name={statePropertyName}
                             placeholderText={placeholder}
                             selected={value}
-                            onChange={date => defaultHandleChange(statePropertyName, date)}
                             {...$field(statePropertyName, (date) => defaultHandleChange(statePropertyName, date))}
                         />
                     </div>
-                    <ReactSVG path="../svg/calendar_1.svg" className="icon icon-input" />
+                    <ReactSVG path={`${SVG_PATH}calendar_1.svg`} className="icon icon-input" />
                     {$validation[statePropertyName].show && <span className="input__error">{$validation[statePropertyName].error.reason}</span>}
                 </div>
             </div>
@@ -56,5 +56,13 @@ export default function DateBlocks(props) {
 }
 
 DateBlocks.propTypes = {
-    bottomBlocks: propTypes.array.isRequired
+    bottomBlocks: propTypes.array.isRequired,
+    bidDeadline: propTypes.oneOfType([
+        propTypes.string,
+        propTypes.object
+    ]),
+    dateOfSelection: propTypes.oneOfType([
+        propTypes.string,
+        propTypes.object
+    ])
 };
