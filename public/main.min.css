@@ -69,3 +69,7 @@
     position: relative;
 }
 
+.form-block__checkbox-group .input__wrapper {
+    margin-bottom: 0;
+}
+
