@@ -44,7 +44,7 @@ export default function Attachment(props) {
                     className="js-drop-zone-files-count"
                     type="file"
                     name="file-count"
-                    {...$field('attachment', (e) => handleFile(e.target.value))}
+                    {...$field('attachment', (e) => handleFile(e))}
                 />
                 <div className="drop-zone__dropping">
                     <ReactSVG path={`${SVG_PATH}draganddrop.svg`} className="icon icon-drop" />

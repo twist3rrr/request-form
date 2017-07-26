@@ -37,10 +37,10 @@ class App extends Component {
     };
 
 
-    handleFile = (path) => {
+    handleFile = (e) => {
         const addFile = () => {
-            const src = path;
-            const splitedPath = path.split('\\');
+            const src = e.target.value;
+            const splitedPath = e.target.value.split('\\');
             const splitedFileString = splitedPath[splitedPath.length - 1].split('.');
             const extension =  `.${splitedFileString[splitedFileString.length - 1]}`
             const name = splitedFileString[splitedFileString.length - 2];
@@ -62,10 +62,12 @@ class App extends Component {
         }
         
         if(this.state.attachment.length > 4) {
-            return console.log('max amount of files');
+            return NotificationManager.warning('You have reached maximum amount of available files');
         } else {
             addFile();
         }
+
+        e.target.value = '';
     };
 
     deleteFile = (id) => {
