@@ -46,7 +46,16 @@ class Form extends Component {
 
         const content = !isLoading
             ? (<div className="container pt-3">
-                    <h1 className="mb-4">{ui.title}</h1>
+                    <div className="container__heading mb-4">
+                        <h1 className="mb-0">{ui.title}</h1>
+                        <button
+                            className="btn-action js-drop-zone-submit"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                $submit(onValid, onInvalid);
+                            }}
+                        >Submit a request</button>
+                    </div>
                     <MainInfo
                         {...ui.info}
                         $field={$field}
@@ -88,16 +97,6 @@ class Form extends Component {
                         dateOfSelection={dateOfSelection}
                         defaultHandleChange={defaultHandleChange}
                     />
-
-                    <div className="block">
-                        <button
-                            className="btn-action js-drop-zone-submit"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                $submit(onValid, onInvalid);
-                            }}
-                        >Submit a request</button>
-                    </div>
                     <NotificationContainer />
             </div>)
             : <Spinner />;

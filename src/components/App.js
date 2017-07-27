@@ -42,7 +42,7 @@ class App extends Component {
             const src = e.target.value;
             const splitedPath = e.target.value.split('\\');
             const splitedFileString = splitedPath[splitedPath.length - 1].split('.');
-            const extension =  `.${splitedFileString[splitedFileString.length - 1]}`
+            const extension =  `.${splitedFileString[splitedFileString.length - 1]}`;
             const name = splitedFileString[splitedFileString.length - 2];
             const newStateArray = [
                 ...this.state.attachment,
@@ -58,7 +58,7 @@ class App extends Component {
                 attachment: newStateArray
             });
 
-            NotificationManager.success('Success', `File: ${splitedPath[splitedPath.length - 1]} was uploaded`);
+            NotificationManager.success(`File: ${splitedPath[splitedPath.length - 1]} was uploaded`, 'Success' );
         }
         
         if(this.state.attachment.length > 4) {
@@ -66,8 +66,6 @@ class App extends Component {
         } else {
             addFile();
         }
-
-        e.target.value = '';
     };
 
     deleteFile = (id) => {
@@ -81,7 +79,7 @@ class App extends Component {
             attachment: newStateArray
         });
 
-        NotificationManager.warning('Warning', `File: ${removedFile.name}.${removedFile.extension} was removed`);
+        NotificationManager.warning(`File: ${removedFile.name}.${removedFile.extension} was removed`, 'Warning');
     }
 
     onValid = () => {
